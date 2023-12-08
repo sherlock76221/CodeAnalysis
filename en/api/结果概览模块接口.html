@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.63">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="icon" type="image/png" href="/images/favicon.png"><meta name="msapplication-TileColor" content="#3eaf7c"><meta name="theme-color" content="#3eaf7c"><title>代码扫描管理 | Tencent Cloud Code Analysis</title><meta name="description" content="用心关注每行代码迭代、助力传承卓越代码文化！">
+    <link rel="preload" href="/CodeAnalysis/assets/style-ab8d9291.css" as="style"><link rel="stylesheet" href="/CodeAnalysis/assets/style-ab8d9291.css">
+    <link rel="modulepreload" href="/CodeAnalysis/assets/app-e7c417ae.js"><link rel="modulepreload" href="/CodeAnalysis/assets/结果概览模块接口.html-5c850c89.js"><link rel="modulepreload" href="/CodeAnalysis/assets/结果概览模块接口.html-e1c1abbc.js"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-ac63d9b1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-26f174d3.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-2ff91087.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_mysql_on_centos.html-db7f0ff0.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_nginx_from_source.html-54e97023.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_python37_on_centos.html-b570eef1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_python37_on_ubuntu.html-5410bac4.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_redis_from_source.html-639cc11c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_redis_on_centos.html-326fcc8e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/任务分布式执行.html-9df77a11.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/使用自建工具git库.html-5ef9ed05.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/集成代码分析工具.html-bd71e66f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-ffb3046b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码度量数据模块接口.html-eaebaba8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码扫描数据模块接口.html-57b9047b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/任务管理模块接口.html-873a6893.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/对象主要字段说明.html-8c870fb5.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/项目管理模块接口.html-601a2e25.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/changelog.html-c3bf70cc.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/contribute.html-593e974f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/joingroup.html-1a62d6c8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/pr.html-6e43b3f4.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-726defb6.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/FAQ.html-567a9470.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-402cc55c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/codeDeploy.html-7a051d3a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deployClient.html-735476a8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploySever.html-16eb30e0.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dockerDeploy.html-129799a4.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dockercomposeDeploy.html-24cbe7f8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/enhanceDeploy.html-c248937d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/initRepo.html-1bc5b23f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/intro.html-d8997c57.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/runProject.html-2a8df092.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_mysql_on_centos.html-ce43f2a8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_nginx_from_source.html-98be647d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_python37_on_centos.html-8d449c43.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_python37_on_ubuntu.html-4d923ccd.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_redis_from_source.html-be950b1d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_redis_on_centos.html-12b83f8d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/任务分布式执行.html-436589b8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/使用自建工具git库.html-c8be3449.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/集成代码分析工具.html-b0c41490.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-93399d23.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码度量数据模块接口.html-1dd058a3.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码扫描数据模块接口.html-935eca75.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/任务管理模块接口.html-0bf8c839.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/对象主要字段说明.html-4c6ccb18.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/结果概览模块接口.html-6f845214.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/项目管理模块接口.html-01bd0fbe.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/changelog.html-a635e5dd.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/contribute.html-f7ab570b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/joingroup.html-b2a54ad7.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/pr.html-7af180e0.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-38dcdc35.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/FAQ.html-2701b9f3.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-a100d817.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/codeDeploy.html-fa2b433b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deployClient.html-8c6c93b7.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploySever.html-21e5e24b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dockerDeploy.html-c1b70734.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dockercomposeDeploy.html-fb117466.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/enhanceDeploy.html-0f3ed6e6.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/initRepo.html-036fed66.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/intro.html-81cae9eb.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/runProject.html-1ba0e4c8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploySource.html-19846a35.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/web.html-74e1e65b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析结果查看.html-9a87136c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/添加规则配置.html-8c1ddbde.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码度量配置.html-5152f67f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查编译配置.html-bf87b376.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查规则配置.html-66d7e946.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查配置.html-70a3cb9b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析方案模板说明.html-40a8da94.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/基础属性配置.html-4d6ea1aa.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/过滤配置.html-243933ae.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/OAuth管理.html-38df57ab.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析记录管理.html-5d83775d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/团队管理.html-4875cc38.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具管理.html-b70be524.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/用户管理.html-f9ded5c8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/节点管理.html-0c79c68c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/项目管理.html-2812768b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/团队管理.html-21585fbc.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/成员权限.html-d4d3baf7.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/节点管理.html-272d1809.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/其他配置.html-d17372d1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/常驻节点分析.html-d05fabc6.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/快速扫描模式.html-f95fea40.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/本地分析.html-673ca6df.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/配置说明.html-fdd4d4a5.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具列表.html-eb98d461.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具管理说明.html-6451628d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/自定义工具.html-e556fb07.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/自定义规则.html-20ee3a73.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/快速启动一次代码分析.html-a8eb740d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/Jenkins_Plugin.html-f6d27814.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploy_with_minio.html-f87ef8d0.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploy_without_migrate.html-be54d52f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/server.html-2a4941d7.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploySource.html-fa02a5ab.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/web.html-b2e4c2e1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/个人令牌.html-60ef6b62.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析结果查看.html-a67bc3a8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/添加规则配置.html-b36c1450.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码度量配置.html-de180c50.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查编译配置.html-12119a2e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查规则配置.html-57baa8a9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查配置.html-b339bbfb.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析方案模板说明.html-207d0cd8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/基础属性配置.html-081fb912.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/过滤配置.html-819fdcb9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/OAuth管理.html-ca439f76.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析记录管理.html-9669db4c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/团队管理.html-eb858d6f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具管理.html-6ddc6d84.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/用户管理.html-83e39eda.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/节点管理.html-d5ac4976.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/项目管理.html-75bac3be.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/团队管理.html-efb877d9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/成员权限.html-f8969fce.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/节点管理.html-dd725c0d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/其他配置.html-7df368f8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/常驻节点分析.html-fbed9067.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/快速扫描模式.html-893f44fd.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/本地分析.html-a2f66a7d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/配置说明.html-16451ae5.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具列表.html-9f10ff18.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具管理说明.html-de1ee473.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/自定义工具.html-7b9f5056.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/自定义规则.html-f0b37bb1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/快速启动一次代码分析.html-cfa6f173.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/Jenkins_Plugin.html-65520cf7.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploy_with_minio.html-0c28de51.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploy_without_migrate.html-edfb87c2.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/server.html-4f085ae9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/Error-Prone.html-fc42f692.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-C1.html-c8cc4281.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-Q1.html-c6aa7739.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-R.html-2806db68.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/cppcheck.html-e6e24d42.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/eslint.html-76ed5f37.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/golangcilint.html-33d27d5d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/code_spec_oc.html-e9278839.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/cpp_doc.html-0e6d8bd9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dependency_vul.html-7f2cb696.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/enhanced_safety_java.html-28e96299.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/front_end_framework_check.html-e52d96ed.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/test_case_verify_go.html-0a786c7d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/Error-Prone.html-6ed20d0a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-C1.html-555539ba.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-Q1.html-6fe94b4a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-R.html-3b6e766c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/cppcheck.html-94e788dd.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/eslint.html-bb636a74.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/golangcilint.html-64414a66.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/code_spec_oc.html-87b260d8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/cpp_doc.html-bdbb672e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dependency_vul.html-68e39c25.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/enhanced_safety_java.html-30438cc1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/front_end_framework_check.html-31b996c4.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/test_case_verify_go.html-012629d0.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/404.html-f9875e7b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-a2099d6c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-e9f7c2fa.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-282cf285.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_mysql_on_centos.html-672ae0cb.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_nginx_from_source.html-54220afa.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_python37_on_centos.html-e87de99e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_python37_on_ubuntu.html-20a2c26a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_redis_from_source.html-6d4faa32.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_redis_on_centos.html-3632ba9b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/任务分布式执行.html-eec84f4a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/使用自建工具git库.html-882766ad.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/集成代码分析工具.html-5b28dd8b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-422045ac.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码度量数据模块接口.html-0ebdf3b7.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码扫描数据模块接口.html-6a998403.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/任务管理模块接口.html-cb7884bb.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/对象主要字段说明.html-a3523a4c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/项目管理模块接口.html-4443f780.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/changelog.html-e756d2b0.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/contribute.html-46de364b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/joingroup.html-a9e63bef.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/pr.html-2c8106bb.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-1f62241d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/FAQ.html-d88da1fe.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-4b82d064.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/codeDeploy.html-41629d76.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deployClient.html-8a27f1d1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploySever.html-cb5d3811.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dockerDeploy.html-b0a18526.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dockercomposeDeploy.html-aae935ca.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/enhanceDeploy.html-5dbea80d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/initRepo.html-9530ec34.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/intro.html-9aa3703d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/runProject.html-0c86db2d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_mysql_on_centos.html-37047bbb.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_nginx_from_source.html-2b54ee49.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_python37_on_centos.html-3425f748.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_python37_on_ubuntu.html-7936334d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_redis_from_source.html-7198d904.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/install_redis_on_centos.html-e20d91af.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/任务分布式执行.html-ae31202b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/使用自建工具git库.html-467c0abf.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/集成代码分析工具.html-0423d1eb.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-35da2320.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码度量数据模块接口.html-00d4e87a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码扫描数据模块接口.html-34953a8e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/任务管理模块接口.html-85e86d28.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/对象主要字段说明.html-bbaa094f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/结果概览模块接口.html-917ffa6b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/项目管理模块接口.html-b95fc8bf.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/changelog.html-d0711ff6.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/contribute.html-a849d19d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/joingroup.html-848d3fa6.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/pr.html-e142022a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-1a0eade8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/FAQ.html-04b1e542.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/index.html-dac32727.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/codeDeploy.html-37e19a40.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deployClient.html-e4dab9ea.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploySever.html-0a2c4500.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dockerDeploy.html-6f101001.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dockercomposeDeploy.html-5df06bd9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/enhanceDeploy.html-93b5e14a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/initRepo.html-662da479.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/intro.html-cc933326.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/runProject.html-e5db3542.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploySource.html-bf45d48e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/web.html-a831558a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析结果查看.html-eb57c2d0.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/添加规则配置.html-48ee16ce.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码度量配置.html-45773fca.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查编译配置.html-6542a1d1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查规则配置.html-090c2201.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查配置.html-12e251bf.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析方案模板说明.html-163b544e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/基础属性配置.html-5977990e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/过滤配置.html-d4d3c0f3.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/OAuth管理.html-9cdfe1fb.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析记录管理.html-bc811c70.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/团队管理.html-787a5570.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具管理.html-247ef0e9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/用户管理.html-7f97775f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/节点管理.html-ae4aba03.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/项目管理.html-62583597.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/团队管理.html-818f3852.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/成员权限.html-a109a271.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/节点管理.html-ff66d120.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/其他配置.html-3012ebec.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/常驻节点分析.html-40afb155.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/快速扫描模式.html-f64e2f73.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/本地分析.html-a3878e91.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/配置说明.html-07d7fb68.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具列表.html-e68f4333.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具管理说明.html-fa71116b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/自定义工具.html-91c490a8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/自定义规则.html-93b31ead.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/快速启动一次代码分析.html-da366adf.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/Jenkins_Plugin.html-887dc799.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploy_with_minio.html-15283e25.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploy_without_migrate.html-988c3d32.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/server.html-741a2513.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploySource.html-f9c58146.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/web.html-017e83f5.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/个人令牌.html-498eab01.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析结果查看.html-f6eb2b92.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/添加规则配置.html-8fa80a8b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码度量配置.html-f048f178.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查编译配置.html-1b30b6db.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查规则配置.html-9212257e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/代码检查配置.html-640bd21a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析方案模板说明.html-efc62f46.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/基础属性配置.html-b82dfafa.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/过滤配置.html-af08105d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/OAuth管理.html-d9b608cf.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/分析记录管理.html-307f62d1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/团队管理.html-a572ba95.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具管理.html-5c4187c3.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/用户管理.html-7d1fe23c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/节点管理.html-12d4cf8d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/项目管理.html-0d94c3dc.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/团队管理.html-a4db72c5.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/成员权限.html-c853ff6d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/节点管理.html-2815fe8c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/其他配置.html-54d5fdf2.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/常驻节点分析.html-e6d4597c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/快速扫描模式.html-95bb0523.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/本地分析.html-28a203b1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/配置说明.html-362f26a8.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具列表.html-983b268c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/工具管理说明.html-58cd50c2.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/自定义工具.html-9a26e6ea.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/自定义规则.html-4e09f70e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/快速启动一次代码分析.html-0257826d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/Jenkins_Plugin.html-3bdae108.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploy_with_minio.html-e9b6a0a3.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/deploy_without_migrate.html-cf34c32a.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/server.html-a00a41b9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/Error-Prone.html-cb05ddef.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-C1.html-b52c7584.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-Q1.html-398983d1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-R.html-8227a92c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/cppcheck.html-2c3f3680.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/eslint.html-6fb36cf1.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/golangcilint.html-71f31b78.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/code_spec_oc.html-fe304c61.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/cpp_doc.html-f547844d.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dependency_vul.html-03d2a176.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/enhanced_safety_java.html-acfb2af9.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/front_end_framework_check.html-04627b11.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/test_case_verify_go.html-ee418124.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/Error-Prone.html-06b84ca7.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-C1.html-26eafe57.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-Q1.html-13fb6806.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/TCA-Armory-R.html-679c0fce.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/cppcheck.html-09171f9c.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/eslint.html-9613034f.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/golangcilint.html-865ec3bc.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/code_spec_oc.html-4eea573e.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/cpp_doc.html-eb213b04.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/dependency_vul.html-06f94e68.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/enhanced_safety_java.html-d0bc10a3.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/front_end_framework_check.html-bfd2087b.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/test_case_verify_go.html-171696e0.js" as="script"><link rel="prefetch" href="/CodeAnalysis/assets/404.html-0ea449c5.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/CodeAnalysis/en" class=""><img class="logo" src="/CodeAnalysis/images/favicon.png" alt="Tencent Cloud Code Analysis"><span class="site-name can-hide">Tencent Cloud Code Analysis</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/CodeAnalysis/en/quickStarted/" class="" aria-label="快速部署"><!--[--><!--]--> 快速部署 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/CodeAnalysis/en/guide/" class="" aria-label="帮助文档"><!--[--><!--]--> 帮助文档 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/CodeAnalysis/en/api/" class="router-link-active" aria-label="API"><!--[--><!--]--> API <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="了解更多"><span class="title">了解更多</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="了解更多"><span class="title">了解更多</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>深入</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/%E4%BB%BB%E5%8A%A1%E5%88%86%E5%B8%83%E5%BC%8F%E6%89%A7%E8%A1%8C.html" class="" aria-label="任务分布式执行"><!--[--><!--]--> 任务分布式执行 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/%E9%9B%86%E6%88%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7.html" class="" aria-label="源码集成代码分析工具"><!--[--><!--]--> 源码集成代码分析工具 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/%E4%BD%BF%E7%94%A8%E8%87%AA%E5%BB%BA%E5%B7%A5%E5%85%B7git%E5%BA%93.html" class="" aria-label="使用自建工具git库"><!--[--><!--]--> 使用自建工具git库 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>依赖安装参考</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_python37_on_centos.html" class="" aria-label="在 CentOS 安装 Python3.7"><!--[--><!--]--> 在 CentOS 安装 Python3.7 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_python37_on_ubuntu.html" class="" aria-label="在 Ubuntu 安装 Python3.7"><!--[--><!--]--> 在 Ubuntu 安装 Python3.7 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_mysql_on_centos.html" class="" aria-label="在 CentOS 安装 MySQL"><!--[--><!--]--> 在 CentOS 安装 MySQL <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_redis_from_source.html" class="" aria-label="源码安装 Redis"><!--[--><!--]--> 源码安装 Redis <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_redis_on_centos.html" class="" aria-label="在 CentOS 安装 Redis"><!--[--><!--]--> 在 CentOS 安装 Redis <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="社区"><span class="title">社区</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="社区"><span class="title">社区</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/CodeAnalysis/en/community/contribute.html" class="" aria-label="贡献指南"><!--[--><!--]--> 贡献指南 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/CodeAnalysis/en/community/changelog.html" class="" aria-label="更新日志"><!--[--><!--]--> 更新日志 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/CodeAnalysis/en/community/joingroup.html" class="" aria-label="加入社区"><!--[--><!--]--> 加入社区 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://tca.tencent.com/" rel="noopener noreferrer" target="_blank" aria-label="体验官方版本"><!--[--><!--]--> 体验官方版本 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="Languages"><span class="title">Languages</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="Languages"><span class="title">Languages</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/CodeAnalysis/" class="" aria-label="简体中文"><!--[--><!--]--> 简体中文 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="router-link-active router-link-exact-active router-link-active" aria-label="English"><!--[--><!--]--> English <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/Tencent/CodeAnalysis" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-color-mode-button" title="toggle color mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/CodeAnalysis/en/quickStarted/" class="" aria-label="快速部署"><!--[--><!--]--> 快速部署 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/CodeAnalysis/en/guide/" class="" aria-label="帮助文档"><!--[--><!--]--> 帮助文档 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/CodeAnalysis/en/api/" class="router-link-active" aria-label="API"><!--[--><!--]--> API <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="了解更多"><span class="title">了解更多</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="了解更多"><span class="title">了解更多</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>深入</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/%E4%BB%BB%E5%8A%A1%E5%88%86%E5%B8%83%E5%BC%8F%E6%89%A7%E8%A1%8C.html" class="" aria-label="任务分布式执行"><!--[--><!--]--> 任务分布式执行 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/%E9%9B%86%E6%88%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7.html" class="" aria-label="源码集成代码分析工具"><!--[--><!--]--> 源码集成代码分析工具 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/%E4%BD%BF%E7%94%A8%E8%87%AA%E5%BB%BA%E5%B7%A5%E5%85%B7git%E5%BA%93.html" class="" aria-label="使用自建工具git库"><!--[--><!--]--> 使用自建工具git库 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>依赖安装参考</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_python37_on_centos.html" class="" aria-label="在 CentOS 安装 Python3.7"><!--[--><!--]--> 在 CentOS 安装 Python3.7 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_python37_on_ubuntu.html" class="" aria-label="在 Ubuntu 安装 Python3.7"><!--[--><!--]--> 在 Ubuntu 安装 Python3.7 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_mysql_on_centos.html" class="" aria-label="在 CentOS 安装 MySQL"><!--[--><!--]--> 在 CentOS 安装 MySQL <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_redis_from_source.html" class="" aria-label="源码安装 Redis"><!--[--><!--]--> 源码安装 Redis <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/CodeAnalysis/en/advanced/install_redis_on_centos.html" class="" aria-label="在 CentOS 安装 Redis"><!--[--><!--]--> 在 CentOS 安装 Redis <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="社区"><span class="title">社区</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="社区"><span class="title">社区</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/CodeAnalysis/en/community/contribute.html" class="" aria-label="贡献指南"><!--[--><!--]--> 贡献指南 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/CodeAnalysis/en/community/changelog.html" class="" aria-label="更新日志"><!--[--><!--]--> 更新日志 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/CodeAnalysis/en/community/joingroup.html" class="" aria-label="加入社区"><!--[--><!--]--> 加入社区 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://tca.tencent.com/" rel="noopener noreferrer" target="_blank" aria-label="体验官方版本"><!--[--><!--]--> 体验官方版本 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="Languages"><span class="title">Languages</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="Languages"><span class="title">Languages</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/CodeAnalysis/" class="" aria-label="简体中文"><!--[--><!--]--> 简体中文 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="router-link-active router-link-exact-active router-link-active" aria-label="English"><!--[--><!--]--> English <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/Tencent/CodeAnalysis" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading active">API <!----></p><ul style="" class="sidebar-item-children"><!--[--><li><a href="/CodeAnalysis/en/api/" class="router-link-active sidebar-item" aria-label="接口调用说明"><!--[--><!--]--> 接口调用说明 <!--[--><!--]--></a><!----></li><li><a href="/CodeAnalysis/en/api/%E5%AF%B9%E8%B1%A1%E4%B8%BB%E8%A6%81%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html" class="sidebar-item" aria-label="对象主要字段说明"><!--[--><!--]--> 对象主要字段说明 <!--[--><!--]--></a><!----></li><li><a href="/CodeAnalysis/en/api/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="sidebar-item" aria-label="项目管理模块"><!--[--><!--]--> 项目管理模块 <!--[--><!--]--></a><!----></li><li><a href="/CodeAnalysis/en/api/%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="sidebar-item" aria-label="任务管理模块"><!--[--><!--]--> 任务管理模块 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="router-link-active router-link-exact-active router-link-active sidebar-item active" aria-label="代码扫描管理"><!--[--><!--]--> 代码扫描管理 <!--[--><!--]--></a><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html#查看项目扫描最新结果概览" class="router-link-active router-link-exact-active sidebar-item" aria-label="查看项目扫描最新结果概览"><!--[--><!--]--> 查看项目扫描最新结果概览 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html#查看项目代码最新扫描结果概览" class="router-link-active router-link-exact-active sidebar-item" aria-label="查看项目代码最新扫描结果概览"><!--[--><!--]--> 查看项目代码最新扫描结果概览 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html#查看项目代码扫描结果概览" class="router-link-active router-link-exact-active sidebar-item" aria-label="查看项目代码扫描结果概览"><!--[--><!--]--> 查看项目代码扫描结果概览 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html#查看项目代码度量圈复杂度结果概览" class="router-link-active router-link-exact-active sidebar-item" aria-label="查看项目代码度量圈复杂度结果概览"><!--[--><!--]--> 查看项目代码度量圈复杂度结果概览 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html#查看项目代码度量重复代码结果概览" class="router-link-active router-link-exact-active sidebar-item" aria-label="查看项目代码度量重复代码结果概览"><!--[--><!--]--> 查看项目代码度量重复代码结果概览 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/CodeAnalysis/en/api/%E7%BB%93%E6%9E%9C%E6%A6%82%E8%A7%88%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html#查看项目代码度量代码统计结果概览" class="router-link-active router-link-exact-active sidebar-item" aria-label="查看项目代码度量代码统计结果概览"><!--[--><!--]--> 查看项目代码度量代码统计结果概览 <!--[--><!--]--></a><!----></li><!--]--></ul></li><li><a href="/CodeAnalysis/en/api/%E4%BB%A3%E7%A0%81%E6%89%AB%E6%8F%8F%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="sidebar-item" aria-label="代码扫描数据管理"><!--[--><!--]--> 代码扫描数据管理 <!--[--><!--]--></a><!----></li><li><a href="/CodeAnalysis/en/api/%E4%BB%A3%E7%A0%81%E5%BA%A6%E9%87%8F%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="sidebar-item" aria-label="代码度量数据管理"><!--[--><!--]--> 代码度量数据管理 <!--[--><!--]--></a><!----></li><!--]--></ul></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h1 id="代码扫描管理" tabindex="-1"><a class="header-anchor" href="#代码扫描管理" aria-hidden="true">#</a> 代码扫描管理</h1><h2 id="查看项目扫描最新结果概览" tabindex="-1"><a class="header-anchor" href="#查看项目扫描最新结果概览" aria-hidden="true">#</a> 查看项目扫描最新结果概览</h2><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>GET /server/analysis/api/orgs/&lt;org_sid&gt;/teams/&lt;team_name&gt;/repos/&lt;repo_id&gt;/projects/&lt;project_id&gt;/overview/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="返回结果" tabindex="-1"><a class="header-anchor" href="#返回结果" aria-hidden="true">#</a> 返回结果</h4><div class="language-JSON line-numbers-mode" data-ext="JSON"><pre class="language-JSON"><code>{
+    &quot;lintscan&quot;: {
+        &quot;issue_open_num&quot;: 74,
+        &quot;issue_fix_num&quot;: 439,
+        &quot;issue_detail_num&quot;: 310,
+        &quot;scan&quot;: {
+            &quot;id&quot;: 1,
+            &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,
+            &quot;execute_time&quot;: &quot;00:02:17.844712&quot;
+        },
+        &quot;current_scan&quot;: {
+            &quot;active_category_detail&quot;: {
+                &quot;convention&quot;: 70,
+                &quot;other&quot;: 4
+            },
+            &quot;active_severity_detail&quot;: {
+                &quot;error&quot;: 69,
+                &quot;warning&quot;: 5
+            },
+            &quot;issue_open_num&quot;: 74,
+            &quot;issue_fix_num&quot;: 439
+        },
+        &quot;total&quot;: {
+            &quot;state_detail&quot;: {
+                &quot;active&quot;: 197,
+                &quot;resolved&quot;: 13,
+                &quot;closed&quot;: 23297
+            },
+            &quot;category_detail&quot;: {
+                &quot;convention&quot;: {
+                    &quot;active&quot;: 184,
+                    &quot;resolved&quot;: 13,
+                    &quot;closed&quot;: 21143
+                },
+                &quot;other&quot;: {
+                    &quot;active&quot;: 13,
+                    &quot;closed&quot;: 154
+                },
+                &quot;correctness&quot;: {
+                    &quot;closed&quot;: 1997
+                },
+                &quot;performance&quot;: {
+                    &quot;closed&quot;: 3
+                }
+            },
+            &quot;severity_detail&quot;: {
+                &quot;error&quot;: {
+                    &quot;active&quot;: 157,
+                    &quot;resolved&quot;: 11,
+                    &quot;closed&quot;: 20113
+                },
+                &quot;warning&quot;: {
+                    &quot;active&quot;: 40,
+                    &quot;resolved&quot;: 2,
+                    &quot;closed&quot;: 2930
+                },
+                &quot;info&quot;: {
+                    &quot;closed&quot;: 254
+                }
+            }
+        },
+        &quot;status&quot;: 0,
+        &quot;text&quot;: &quot;成功&quot;,
+        &quot;description&quot;: null,
+        &quot;scan_summary&quot;: {
+            &quot;convention&quot;: {
+                &quot;error&quot;: {
+                    &quot;rule_count&quot;: 7,
+                    &quot;active&quot;: 65
+                },
+                &quot;warning&quot;: {
+                    &quot;rule_count&quot;: 2,
+                    &quot;active&quot;: 5
+                }
+            },
+            &quot;other&quot;: {
+                &quot;error&quot;: {
+                    &quot;rule_count&quot;: 1,
+                    &quot;active&quot;: 4
+                }
+            }
+        },
+        &quot;total_summary&quot;: {
+            &quot;correctness&quot;: {
+                &quot;error&quot;: {
+                    &quot;rule_count&quot;: 16,
+                    &quot;closed&quot;: 1315
+                },
+                &quot;warning&quot;: {
+                    &quot;rule_count&quot;: 10,
+                    &quot;closed&quot;: 629
+                },
+                &quot;info&quot;: {
+                    &quot;rule_count&quot;: 1,
+                    &quot;closed&quot;: 53
+                }
+            },
+            &quot;performance&quot;: {
+                &quot;warning&quot;: {
+                    &quot;rule_count&quot;: 1,
+                    &quot;closed&quot;: 3
+                }
+            },
+            &quot;convention&quot;: {
+                &quot;error&quot;: {
+                    &quot;rule_count&quot;: 42,
+                    &quot;active&quot;: 149,
+                    &quot;resolved&quot;: 11,
+                    &quot;closed&quot;: 18778
+                },
+                &quot;warning&quot;: {
+                    &quot;rule_count&quot;: 17,
+                    &quot;active&quot;: 35,
+                    &quot;resolved&quot;: 2,
+                    &quot;closed&quot;: 2298
+                },
+                &quot;info&quot;: {
+                    &quot;rule_count&quot;: 1,
+                    &quot;closed&quot;: 67
+                }
+            },
+            &quot;other&quot;: {
+                &quot;error&quot;: {
+                    &quot;rule_count&quot;: 2,
+                    &quot;active&quot;: 8,
+                    &quot;closed&quot;: 20
+                },
+                &quot;warning&quot;: {
+                    &quot;rule_count&quot;: 1,
+                    &quot;active&quot;: 5
+                },
+                &quot;info&quot;: {
+                    &quot;rule_count&quot;: 3,
+                    &quot;closed&quot;: 134
+                }
+            }
+        }
+    },
+    &quot;cyclomaticcomplexityscan&quot;: {
+        &quot;id&quot;: 1,
+        &quot;scan_revision&quot;: &quot;scan_revision&quot;,
+        &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,
+        &quot;default_summary&quot;: {
+            &quot;min_ccn&quot;: 20,
+            &quot;over_cc_func_count&quot;: 6,
+            &quot;under_cc_func_count&quot;: 796,
+            &quot;diff_over_cc_func_count&quot;: 0,
+            &quot;over_cc_func_average&quot;: 22.333333333333332,
+            &quot;cc_func_average&quot;: 2.5099750623441395,
+            &quot;over_cc_sum&quot;: 14,
+            &quot;cc_average_of_lines&quot;: 1.0422094841063054
+        },
+        &quot;custom_summary&quot;: null,
+        &quot;created_time&quot;: &quot;2021-03-11T20:48:59.976947+08:00&quot;,
+        &quot;creator&quot;: null,
+        &quot;modified_time&quot;: &quot;2021-03-11T20:49:00.088841+08:00&quot;,
+        &quot;modifier&quot;: null,
+        &quot;deleted_time&quot;: null,
+        &quot;deleter&quot;: null,
+        &quot;last_revision&quot;: &quot;last_revision&quot;,
+        &quot;diff_cc_num&quot;: 0,
+        &quot;cc_open_num&quot;: 6,
+        &quot;cc_average_of_lines&quot;: 1.0422094841063054,
+        &quot;cc_fix_num&quot;: 0,
+        &quot;worse_cc_file_num&quot;: 0,
+        &quot;min_ccn&quot;: 20,
+        &quot;code_line_num&quot;: 13433,
+        &quot;scan&quot;: 1
+    },
+    &quot;duplicatescan&quot;: {
+        &quot;id&quot;: 1,
+        &quot;scan_revision&quot;: &quot;scan_revision&quot;,
+        &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,
+        &quot;default_summary&quot;: {
+            &quot;exhi_risk&quot;: {
+                &quot;range&quot;: [
+                    0.2,
+                    1
+                ],
+                &quot;file_count&quot;: 1,
+                &quot;diff&quot;: {
+                    &quot;diff_file_count&quot;: 0
+                }
+            },
+            &quot;high_risk&quot;: {
+                &quot;range&quot;: [
+                    0.11,
+                    0.2
+                ],
+                &quot;file_count&quot;: 3,
+                &quot;diff&quot;: {
+                    &quot;diff_file_count&quot;: 0
+                }
+            },
+            &quot;midd_risk&quot;: {
+                &quot;range&quot;: [
+                    0.05,
+                    0.11
+                ],
+                &quot;file_count&quot;: 2,
+                &quot;diff&quot;: {
+                    &quot;diff_file_count&quot;: 0
+                }
+            },
+            &quot;low_risk&quot;: {
+                &quot;range&quot;: [
+                    0,
+                    0.05
+                ],
+                &quot;file_count&quot;: 2,
+                &quot;diff&quot;: {
+                    &quot;diff_file_count&quot;: 0
+                }
+            }
+        },
+        &quot;custom_summary&quot;: null,
+        &quot;last_revision&quot;: &quot;last_revision&quot;,
+        &quot;duplicate_file_count&quot;: 8,
+        &quot;duplicate_block_count&quot;: 55,
+        &quot;duplicate_line_count&quot;: 1177,
+        &quot;diff_duplicate_block_count&quot;: 0,
+        &quot;diff_duplicate_line_count&quot;: 0,
+        &quot;close_issue_count&quot;: 0,
+        &quot;new_issue_count&quot;: 0,
+        &quot;reopen_issue_count&quot;: 5,
+        &quot;ignored_issue_count&quot;: 0,
+        &quot;duplicate_rate&quot;: 4.98,
+        &quot;unique_duplicate_line_count&quot;: 1083,
+        &quot;total_duplicate_line_count&quot;: 1083,
+        &quot;total_line_count&quot;: 21745,
+        &quot;scan&quot;: 1
+    },
+    &quot;clocscan&quot;: {
+        &quot;id&quot;: 1,
+        &quot;scan_revision&quot;: &quot;scan_revision&quot;,
+        &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,
+        &quot;last_revision&quot;: &quot;last_revision&quot;,
+        &quot;code_line_num&quot;: 140490,
+        &quot;comment_line_num&quot;: 5410,
+        &quot;blank_line_num&quot;: 3408,
+        &quot;total_line_num&quot;: 149308,
+        &quot;add_code_line_num&quot;: 6673,
+        &quot;add_comment_line_num&quot;: 2309,
+        &quot;add_blank_line_num&quot;: 1289,
+        &quot;add_total_line_num&quot;: 10271,
+        &quot;mod_code_line_num&quot;: 965,
+        &quot;mod_comment_line_num&quot;: 297,
+        &quot;mod_blank_line_num&quot;: 0,
+        &quot;mod_total_line_num&quot;: 1262,
+        &quot;del_code_line_num&quot;: 35844,
+        &quot;del_comment_line_num&quot;: 2117,
+        &quot;del_blank_line_num&quot;: 1794,
+        &quot;del_total_line_num&quot;: 39755,
+        &quot;scan&quot;: 1
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="查看项目代码最新扫描结果概览" tabindex="-1"><a class="header-anchor" href="#查看项目代码最新扫描结果概览" aria-hidden="true">#</a> 查看项目代码最新扫描结果概览</h2><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>GET /server/analysis/api/orgs/&lt;org_sid&gt;/teams/&lt;team_name&gt;/repos/&lt;repo_id&gt;/projects/&lt;project_id&gt;/overview/latestscan/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="参数列表" tabindex="-1"><a class="header-anchor" href="#参数列表" aria-hidden="true">#</a> 参数列表</h4><table><thead><tr><th>参数</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>scan_revision</td><td>str</td><td>指定查询的扫描版本号，如不指定则为当前项目最新的一次扫描</td></tr></tbody></table><h4 id="返回结果-1" tabindex="-1"><a class="header-anchor" href="#返回结果-1" aria-hidden="true">#</a> 返回结果</h4><div class="language-JSON line-numbers-mode" data-ext="JSON"><pre class="language-JSON"><code>{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,                            # 扫描编号
+        &quot;repo_id&quot;: 1,                       # 代码库编号
+        &quot;project_id&quot;: 1,                    # 项目编号
+        &quot;job_gid&quot;: 1,                       # 关联任务编号
+        &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,  # 扫描时间
+        &quot;current_revision&quot;: &quot;current_revision&quot;,  # 扫描版本号
+        &quot;result_code&quot;: 0,                   # 扫描任务结果码，0表示正常
+        &quot;result_code_msg&quot;: &quot;成功&quot;,
+        &quot;result_msg&quot;: null,
+        &quot;lintscan&quot;: {                         # 代码扫描结果信息
+            &quot;current_scan&quot;: {                 # 本次扫描信息
+                &quot;active_severity_detail&quot;: {   # 不同严重级别的活跃问题数，包含 fatal（1-致命）, error（2-错误）, warning（3-警告）, info（4-提示）
+                    &quot;error&quot;: 69,              
+                    &quot;warning&quot;: 5              
+                },
+                &quot;issue_open_num&quot;: 10,         # 本次扫描新发现问题数
+                &quot;issue_fix_num&quot;: 2            # 本次扫描关闭存量问题数
+            },
+            &quot;total&quot;: {                        # 当前项目整体信息
+                &quot;state_detail&quot;: {             # 不同处理状态的问题数，包含 active（1-活跃）、resolved（2-已处理）、closed（3-已关闭）
+                    &quot;active&quot;: 197,            
+                    &quot;resolved&quot;: 13,
+                    &quot;closed&quot;: 23297
+                },
+                &quot;severity_detail&quot;: {         # 不同严重级别下不同处理状态的问题量
+                    &quot;error&quot;: {
+                        &quot;active&quot;: 157,
+                        &quot;resolved&quot;: 11,
+                        &quot;closed&quot;: 20113
+                    },
+                    &quot;warning&quot;: {
+                        &quot;active&quot;: 40,
+                        &quot;resolved&quot;: 2,
+                        &quot;closed&quot;: 2930
+                    },
+                    &quot;info&quot;: {
+                        &quot;closed&quot;: 254
+                    }
+                }
+            }
+        },
+        &quot;duplicatescan&quot;: {                    # 重复代码扫描结果信息
+            &quot;id&quot;: 1,                          # 扫描任务编号
+            &quot;scan_revision&quot;: &quot;scan_revision&quot;, # 扫描版本号
+            &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,  # 扫描时间
+            &quot;default_summary&quot;: {              # 默认概览
+                &quot;exhi_risk&quot;: {                # 极高风险
+                    &quot;range&quot;: [                # 重复率范围: 0.2-1
+                        0.2,
+                        1
+                    ],
+                    &quot;file_count&quot;: 1,          # 文件数量
+                    &quot;diff&quot;: {                 # 增量数据
+                        &quot;diff_file_count&quot;: 0  # 增量文件数量
+                    }
+                },
+                &quot;high_risk&quot;: {                # 高风险
+                    &quot;range&quot;: [                # 重复率范围：0.11-0.2
+                        0.11,
+                        0.2
+                    ],
+                    &quot;file_count&quot;: 3,
+                    &quot;diff&quot;: {
+                        &quot;diff_file_count&quot;: 0
+                    }
+                },
+                &quot;midd_risk&quot;: {                # 中风险
+                    &quot;range&quot;: [                # 重复率范围：0.05-0.11
+                        0.05,
+                        0.11
+                    ],
+                    &quot;file_count&quot;: 2,
+                    &quot;diff&quot;: {
+                        &quot;diff_file_count&quot;: 0
+                    }
+                },
+                &quot;low_risk&quot;: {                 # 低风险
+                    &quot;range&quot;: [                # 重复率范围：0-0.05
+                        0,
+                        0.05
+                    ],
+                    &quot;file_count&quot;: 2,
+                    &quot;diff&quot;: {
+                        &quot;diff_file_count&quot;: 0
+                    }
+                }
+            },
+            &quot;custom_summary&quot;: null,           # 自定义概览数据
+            &quot;last_revision&quot;: &quot;2010ef28ff3a26424d4e8f32df022f90cd682eda&quot;,  # 上次扫描版本号
+            &quot;duplicate_file_count&quot;: 8,        # 重复文件数量
+            &quot;duplicate_block_count&quot;: 55,      # 重复代码块数量
+            &quot;duplicate_line_count&quot;: 1177,     # 重复代码行数
+            &quot;diff_duplicate_block_count&quot;: 0,  # 增量重复代码块数量
+            &quot;diff_duplicate_line_count&quot;: 0,   # 增量重复代码行数
+            &quot;close_issue_count&quot;: 0,           # 关闭问题数
+            &quot;new_issue_count&quot;: 0,             # 新增问题数
+            &quot;reopen_issue_count&quot;: 5,          # 重新打开问题数
+            &quot;ignored_issue_count&quot;: 0,         # 忽略问题数
+            &quot;duplicate_rate&quot;: 4.98,           # 重复率
+            &quot;unique_duplicate_line_count&quot;: 1083,  # 去重后的重复代码行数
+            &quot;total_duplicate_line_count&quot;: 1083,   # 项目总的去重后的重复代码行数
+            &quot;total_line_count&quot;: 21745,            # 项目总行书
+            &quot;scan&quot;: 1                         # 关联扫描任务编号
+        },
+        &quot;cyclomaticcomplexityscan&quot;: {         # 圈复杂度扫描数据
+            &quot;id&quot;: 1,                          # 圈复杂度扫描编号
+            &quot;scan_revision&quot;: &quot;scan_revision&quot;, # 扫描版本号
+            &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,
+            &quot;default_summary&quot;: {                      # 默认概览数据
+                &quot;min_ccn&quot;: 20,                        # 最小圈复杂度阈值
+                &quot;over_cc_func_count&quot;: 6,              # 超标函数数量
+                &quot;under_cc_func_count&quot;: 796,           # 未超标函数数量
+                &quot;diff_over_cc_func_count&quot;: 0,         # 增量超标函数数据
+                &quot;over_cc_func_average&quot;: 22.333333333333332,  # 平均超标圈复杂度
+                &quot;cc_func_average&quot;: 2.5099750623441395,  # 平均圈复杂度
+                &quot;over_cc_sum&quot;: 14,                      # 文件超标方法圈复杂度超过阈值的差值之和
+                &quot;cc_average_of_lines&quot;: 1.0422094841063054 # 千行代码平均圈复杂度
+            },
+            &quot;custom_summary&quot;: null,                     # 自定义概览数据
+            &quot;created_time&quot;: &quot;2021-03-11T20:48:59.976947+08:00&quot;,
+            &quot;creator&quot;: null,
+            &quot;modified_time&quot;: &quot;2021-03-11T20:49:00.088841+08:00&quot;,
+            &quot;modifier&quot;: null,
+            &quot;deleted_time&quot;: null,
+            &quot;deleter&quot;: null,
+            &quot;last_revision&quot;: &quot;last_revision&quot;,           # 上一次扫描版本号
+            &quot;diff_cc_num&quot;: 0,                           # 增量超标函数数量
+            &quot;cc_open_num&quot;: 6,                           # 超标函数量
+            &quot;cc_average_of_lines&quot;: 1.0422094841063054,  # 千行代码平均圈复杂度
+            &quot;cc_fix_num&quot;: 0,                            # 修复数量
+            &quot;worse_cc_file_num&quot;: 0,                     # 圈复杂度恶化的文件数据
+            &quot;min_ccn&quot;: 20,                              # 最小圈复杂度阈值
+            &quot;code_line_num&quot;: 13433,                     # 代码行数
+            &quot;scan&quot;: 1
+        },
+        &quot;clocscan&quot;: {
+            &quot;id&quot;: 1,
+            &quot;scan_revision&quot;: &quot;scan_revision&quot;,           # 扫描版本号
+            &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,  # 扫描时间
+            &quot;last_revision&quot;: &quot;last_revision&quot;,           # 上一次扫描版本号
+            &quot;code_line_num&quot;: 140490,                    # 代码行数
+            &quot;comment_line_num&quot;: 5410,                   # 注释行数
+            &quot;blank_line_num&quot;: 3408,                     # 空白行数
+            &quot;total_line_num&quot;: 149308,                   # 总行数
+            &quot;add_code_line_num&quot;: 6673,                  # 增加的代码行数
+            &quot;add_comment_line_num&quot;: 2309,               # 增加的注释行数
+            &quot;add_blank_line_num&quot;: 1289,                 # 增加的空白行数
+            &quot;add_total_line_num&quot;: 10271,                # 增加的总行数
+            &quot;mod_code_line_num&quot;: 965,                   # 修改的代码行数
+            &quot;mod_comment_line_num&quot;: 297,                # 修改的注释行数
+            &quot;mod_blank_line_num&quot;: 0,                    # 修改的空白行数
+            &quot;mod_total_line_num&quot;: 1262,                 # 修改的总行数
+            &quot;del_code_line_num&quot;: 35844,                 # 删除的代码行数
+            &quot;del_comment_line_num&quot;: 2117,               # 删除的注释行数
+            &quot;del_blank_line_num&quot;: 1794,                 # 删除的空白行数
+            &quot;del_total_line_num&quot;: 39755,                # 删除的总行数
+            &quot;scan&quot;: 1
+        }
+    },
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;请求成功&quot;,
+    &quot;status_code&quot;: 200
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="查看项目代码扫描结果概览" tabindex="-1"><a class="header-anchor" href="#查看项目代码扫描结果概览" aria-hidden="true">#</a> 查看项目代码扫描结果概览</h2><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>GET /server/analysis/api/orgs/&lt;org_sid&gt;/teams/&lt;team_name&gt;/repos/&lt;repo_id&gt;/projects/&lt;project_id&gt;/overview/lintscans/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="参数列表-1" tabindex="-1"><a class="header-anchor" href="#参数列表-1" aria-hidden="true">#</a> 参数列表</h4><table><thead><tr><th>参数</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>scan_time_before</td><td>str</td><td>扫描任务起始时间，格式: 2021-01-01 00:00:00</td></tr><tr><td>scan_time_after</td><td>str</td><td>扫描任务结束时间</td></tr></tbody></table><h4 id="返回结果-2" tabindex="-1"><a class="header-anchor" href="#返回结果-2" aria-hidden="true">#</a> 返回结果</h4><div class="language-JSON line-numbers-mode" data-ext="JSON"><pre class="language-JSON"><code>{
+    &quot;data&quot;: {
+        &quot;count&quot;: 1,
+        &quot;next&quot;: null,
+        &quot;previous&quot;: null,
+        &quot;results&quot;: [
+            {
+                &quot;issue_open_num&quot;: 10,             # 本次扫描新发现问题数
+                &quot;issue_fix_num&quot;: 2,               # 本次扫描关闭存量问题数
+                &quot;issue_detail_num&quot;: 310,          # 本次扫描上报原始问题数（问题展示会进行聚合）
+                &quot;scan&quot;: {                         # 扫描信息
+                    &quot;id&quot;: 1,                      # 扫描任务编号
+                    &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,  # 扫描开始时间
+                    &quot;execute_time&quot;: &quot;00:02:17.844712&quot;                 # 扫描执行耗时
+                },
+                &quot;current_scan&quot;: {                 # 本次扫描信息
+                    &quot;active_category_detail&quot;: {   # 活跃问题分类，包含 CORRECTNESS（1-功能）、SECURITY（2-安全）、PERFORMANCE（3-性能）、USABILITY（4-可用性）、ACCESSIBILITY（5-无障碍化）、I18N（6-国际化）、CONVENTION（7-代码风格）、OTHER（8-其他）
+                        &quot;convention&quot;: 70,         # 代码风格类型问题
+                        &quot;other&quot;: 4                # 其他类型问题
+                    },
+                    &quot;active_severity_detail&quot;: {   # 不同严重级别的活跃问题数，包含 fatal（1-致命）, error（2-错误）, warning（3-警告）, info（4-提示）
+                        &quot;error&quot;: 69,              
+                        &quot;warning&quot;: 5              
+                    },
+                    &quot;issue_open_num&quot;: 10,         # 本次扫描新发现问题数
+                    &quot;issue_fix_num&quot;: 2            # 本次扫描关闭存量问题数
+                },
+                &quot;total&quot;: {                        # 当前项目整体信息
+                    &quot;state_detail&quot;: {             # 不同处理状态的问题数，包含 active（1-活跃）、resolved（2-已处理）、closed（3-已关闭）
+                        &quot;active&quot;: 197,            
+                        &quot;resolved&quot;: 13,
+                        &quot;closed&quot;: 23297
+                    },
+                    &quot;category_detail&quot;: {          # 不同分类下不同处理状态的问题量
+                        &quot;convention&quot;: {           
+                            &quot;active&quot;: 184,
+                            &quot;resolved&quot;: 13,
+                            &quot;closed&quot;: 21143
+                        },
+                        &quot;other&quot;: {                
+                            &quot;active&quot;: 13,
+                            &quot;closed&quot;: 154
+                        },
+                        &quot;correctness&quot;: {
+                            &quot;closed&quot;: 1997
+                        },
+                        &quot;performance&quot;: {
+                            &quot;closed&quot;: 3
+                        }
+                    },
+                    &quot;severity_detail&quot;: {         # 不同严重级别下不同处理状态的问题量
+                        &quot;error&quot;: {
+                            &quot;active&quot;: 157,
+                            &quot;resolved&quot;: 11,
+                            &quot;closed&quot;: 20113
+                        },
+                        &quot;warning&quot;: {
+                            &quot;active&quot;: 40,
+                            &quot;resolved&quot;: 2,
+                            &quot;closed&quot;: 2930
+                        },
+                        &quot;info&quot;: {
+                            &quot;closed&quot;: 254
+                        }
+                    }
+                },
+                &quot;status&quot;: 0,                     # 扫描状态，0表示成功
+                &quot;text&quot;: &quot;成功&quot;,
+                &quot;description&quot;: null,
+                &quot;scan_summary&quot;: {                # 扫描概览
+                    &quot;convention&quot;: {              
+                        &quot;error&quot;: {               
+                            &quot;rule_count&quot;: 7,     # 规则数
+                            &quot;active&quot;: 65         # 活跃问题数
+                        },
+                        &quot;warning&quot;: {
+                            &quot;rule_count&quot;: 2,
+                            &quot;active&quot;: 5
+                        }
+                    },
+                    &quot;other&quot;: {
+                        &quot;error&quot;: {
+                            &quot;rule_count&quot;: 1,
+                            &quot;active&quot;: 4
+                        }
+                    }
+                },
+                &quot;total_summary&quot;: {
+                    &quot;correctness&quot;: {
+                        &quot;error&quot;: {
+                            &quot;rule_count&quot;: 16,
+                            &quot;closed&quot;: 1315
+                        },
+                        &quot;warning&quot;: {
+                            &quot;rule_count&quot;: 10,
+                            &quot;closed&quot;: 629
+                        },
+                        &quot;info&quot;: {
+                            &quot;rule_count&quot;: 1,
+                            &quot;closed&quot;: 53
+                        }
+                    },
+                    &quot;performance&quot;: {
+                        &quot;warning&quot;: {
+                            &quot;rule_count&quot;: 1,
+                            &quot;closed&quot;: 3
+                        }
+                    },
+                    &quot;convention&quot;: {
+                        &quot;error&quot;: {
+                            &quot;rule_count&quot;: 42,
+                            &quot;active&quot;: 149,
+                            &quot;resolved&quot;: 11,
+                            &quot;closed&quot;: 18778
+                        },
+                        &quot;warning&quot;: {
+                            &quot;rule_count&quot;: 17,
+                            &quot;active&quot;: 35,
+                            &quot;resolved&quot;: 2,
+                            &quot;closed&quot;: 2298
+                        },
+                        &quot;info&quot;: {
+                            &quot;rule_count&quot;: 1,
+                            &quot;closed&quot;: 67
+                        }
+                    },
+                    &quot;other&quot;: {
+                        &quot;error&quot;: {
+                            &quot;rule_count&quot;: 2,
+                            &quot;active&quot;: 8,
+                            &quot;closed&quot;: 20
+                        },
+                        &quot;warning&quot;: {
+                            &quot;rule_count&quot;: 1,
+                            &quot;active&quot;: 5
+                        },
+                        &quot;info&quot;: {
+                            &quot;rule_count&quot;: 3,
+                            &quot;closed&quot;: 134
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;请求成功&quot;,
+    &quot;status_code&quot;: 200
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="查看项目代码度量圈复杂度结果概览" tabindex="-1"><a class="header-anchor" href="#查看项目代码度量圈复杂度结果概览" aria-hidden="true">#</a> 查看项目代码度量圈复杂度结果概览</h2><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>GET /server/analysis/api/orgs/&lt;org_sid&gt;/teams/&lt;team_name&gt;/repos/&lt;repo_id&gt;/projects/&lt;project_id&gt;/overview/cycscans/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="参数列表-2" tabindex="-1"><a class="header-anchor" href="#参数列表-2" aria-hidden="true">#</a> 参数列表</h4><table><thead><tr><th>参数</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>scan_time_before</td><td>str</td><td>扫描任务起始时间，格式: 2021-01-01 00:00:00</td></tr><tr><td>scan_time_after</td><td>str</td><td>扫描任务结束时间</td></tr></tbody></table><h4 id="返回结果-3" tabindex="-1"><a class="header-anchor" href="#返回结果-3" aria-hidden="true">#</a> 返回结果</h4><div class="language-JSON line-numbers-mode" data-ext="JSON"><pre class="language-JSON"><code>{
+    &quot;data&quot;: {
+        &quot;count&quot;: 1,
+        &quot;next&quot;: null,
+        &quot;previous&quot;: null,
+        &quot;results&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;scan_revision&quot;: &quot;scan_revision&quot;,
+                &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,
+                &quot;default_summary&quot;: {
+                    &quot;min_ccn&quot;: 20,
+                    &quot;over_cc_func_count&quot;: 6,
+                    &quot;under_cc_func_count&quot;: 796,
+                    &quot;diff_over_cc_func_count&quot;: 0,
+                    &quot;over_cc_func_average&quot;: 22.333333333333332,
+                    &quot;cc_func_average&quot;: 2.5099750623441395,
+                    &quot;over_cc_sum&quot;: 14,
+                    &quot;cc_average_of_lines&quot;: 1.0422094841063054
+                },
+                &quot;custom_summary&quot;: null,
+                &quot;created_time&quot;: &quot;2021-03-11T20:48:59.976947+08:00&quot;,
+                &quot;creator&quot;: null,
+                &quot;modified_time&quot;: &quot;2021-03-11T20:49:00.088841+08:00&quot;,
+                &quot;modifier&quot;: null,
+                &quot;deleted_time&quot;: null,
+                &quot;deleter&quot;: null,
+                &quot;last_revision&quot;: &quot;last_revision&quot;,
+                &quot;diff_cc_num&quot;: 0,
+                &quot;cc_open_num&quot;: 6,
+                &quot;cc_average_of_lines&quot;: 1.0422094841063054,
+                &quot;cc_fix_num&quot;: 0,
+                &quot;worse_cc_file_num&quot;: 0,
+                &quot;min_ccn&quot;: 20,
+                &quot;code_line_num&quot;: 13433,
+                &quot;scan&quot;: 1
+            }
+        ]
+    },
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;请求成功&quot;,
+    &quot;status_code&quot;: 200
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="查看项目代码度量重复代码结果概览" tabindex="-1"><a class="header-anchor" href="#查看项目代码度量重复代码结果概览" aria-hidden="true">#</a> 查看项目代码度量重复代码结果概览</h2><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>GET /server/analysis/api/orgs/&lt;org_sid&gt;/teams/&lt;team_name&gt;/repos/&lt;repo_id&gt;/projects/&lt;project_id&gt;/overview/dupscans/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="参数列表-3" tabindex="-1"><a class="header-anchor" href="#参数列表-3" aria-hidden="true">#</a> 参数列表</h4><table><thead><tr><th>参数</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>scan_time_before</td><td>str</td><td>扫描任务起始时间，格式: 2021-01-01 00:00:00</td></tr><tr><td>scan_time_after</td><td>str</td><td>扫描任务结束时间</td></tr></tbody></table><h4 id="返回结果-4" tabindex="-1"><a class="header-anchor" href="#返回结果-4" aria-hidden="true">#</a> 返回结果</h4><div class="language-JSON line-numbers-mode" data-ext="JSON"><pre class="language-JSON"><code>{
+    &quot;data&quot;: {
+        &quot;count&quot;: 1,
+        &quot;next&quot;: null,
+        &quot;previous&quot;: null,
+        &quot;results&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;scan_revision&quot;: &quot;scan_revision&quot;,
+                &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,
+                &quot;default_summary&quot;: {
+                    &quot;exhi_risk&quot;: {
+                        &quot;range&quot;: [
+                            0.2,
+                            1
+                        ],
+                        &quot;file_count&quot;: 1,
+                        &quot;diff&quot;: {
+                            &quot;diff_file_count&quot;: 0
+                        }
+                    },
+                    &quot;high_risk&quot;: {
+                        &quot;range&quot;: [
+                            0.11,
+                            0.2
+                        ],
+                        &quot;file_count&quot;: 3,
+                        &quot;diff&quot;: {
+                            &quot;diff_file_count&quot;: 0
+                        }
+                    },
+                    &quot;midd_risk&quot;: {
+                        &quot;range&quot;: [
+                            0.05,
+                            0.11
+                        ],
+                        &quot;file_count&quot;: 2,
+                        &quot;diff&quot;: {
+                            &quot;diff_file_count&quot;: 0
+                        }
+                    },
+                    &quot;low_risk&quot;: {
+                        &quot;range&quot;: [
+                            0,
+                            0.05
+                        ],
+                        &quot;file_count&quot;: 2,
+                        &quot;diff&quot;: {
+                            &quot;diff_file_count&quot;: 0
+                        }
+                    }
+                },
+                &quot;custom_summary&quot;: null,
+                &quot;last_revision&quot;: &quot;last_revision&quot;,
+                &quot;duplicate_file_count&quot;: 8,
+                &quot;duplicate_block_count&quot;: 55,
+                &quot;duplicate_line_count&quot;: 1177,
+                &quot;diff_duplicate_block_count&quot;: 0,
+                &quot;diff_duplicate_line_count&quot;: 0,
+                &quot;close_issue_count&quot;: 0,
+                &quot;new_issue_count&quot;: 0,
+                &quot;reopen_issue_count&quot;: 5,
+                &quot;ignored_issue_count&quot;: 0,
+                &quot;duplicate_rate&quot;: 4.98,
+                &quot;unique_duplicate_line_count&quot;: 1083,
+                &quot;total_duplicate_line_count&quot;: 1083,
+                &quot;total_line_count&quot;: 21745,
+                &quot;scan&quot;: 1
+            }
+        ]
+    },
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;请求成功&quot;,
+    &quot;status_code&quot;: 200
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="查看项目代码度量代码统计结果概览" tabindex="-1"><a class="header-anchor" href="#查看项目代码度量代码统计结果概览" aria-hidden="true">#</a> 查看项目代码度量代码统计结果概览</h2><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>GET /server/analysis/api/orgs/&lt;org_sid&gt;/teams/&lt;team_name&gt;/repos/&lt;repo_id&gt;/projects/&lt;project_id&gt;/overview/clocscans/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="参数列表-4" tabindex="-1"><a class="header-anchor" href="#参数列表-4" aria-hidden="true">#</a> 参数列表</h4><table><thead><tr><th>参数</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>scan_time_before</td><td>str</td><td>扫描任务起始时间，格式: 2021-01-01 00:00:00</td></tr><tr><td>scan_time_after</td><td>str</td><td>扫描任务结束时间</td></tr></tbody></table><h4 id="返回结果-5" tabindex="-1"><a class="header-anchor" href="#返回结果-5" aria-hidden="true">#</a> 返回结果</h4><div class="language-JSON line-numbers-mode" data-ext="JSON"><pre class="language-JSON"><code>{
+    &quot;data&quot;: {
+        &quot;count&quot;: 1,
+        &quot;next&quot;: null,
+        &quot;previous&quot;: null,
+        &quot;results&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;scan_revision&quot;: &quot;scan_revision&quot;,
+                &quot;scan_time&quot;: &quot;2021-03-11T20:46:44.171607+08:00&quot;,
+                &quot;last_revision&quot;: &quot;last_revision&quot;,
+                &quot;code_line_num&quot;: 140490,
+                &quot;comment_line_num&quot;: 5410,
+                &quot;blank_line_num&quot;: 3408,
+                &quot;total_line_num&quot;: 149308,
+                &quot;add_code_line_num&quot;: 6673,
+                &quot;add_comment_line_num&quot;: 2309,
+                &quot;add_blank_line_num&quot;: 1289,
+                &quot;add_total_line_num&quot;: 10271,
+                &quot;mod_code_line_num&quot;: 965,
+                &quot;mod_comment_line_num&quot;: 297,
+                &quot;mod_blank_line_num&quot;: 0,
+                &quot;mod_total_line_num&quot;: 1262,
+                &quot;del_code_line_num&quot;: 35844,
+                &quot;del_comment_line_num&quot;: 2117,
+                &quot;del_blank_line_num&quot;: 1794,
+                &quot;del_total_line_num&quot;: 39755,
+                &quot;scan&quot;: 1
+            }
+        ]
+    },
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;请求成功&quot;,
+    &quot;status_code&quot;: 200
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div><!--[--><!--]--></div><footer class="page-meta"><div class="meta-item edit-link"><a class="external-link meta-item-label" href="https://github.com/Tencent/CodeAnalysis/edit/main/doc/en/api/结果概览模块接口.md" rel="noopener noreferrer" target="_blank" aria-label="Edit this page on GitHub"><!--[--><!--]--> Edit this page on GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 2927096163@qq.com">yale</span><!----><!--]--><!--]--></span></div></footer><nav class="page-nav"><p class="inner"><span class="prev"><a href="/CodeAnalysis/en/api/%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="" aria-label="任务管理模块"><!--[--><!--]--> 任务管理模块 <!--[--><!--]--></a></span><span class="next"><a href="/CodeAnalysis/en/api/%E4%BB%A3%E7%A0%81%E6%89%AB%E6%8F%8F%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.html" class="" aria-label="代码扫描数据管理"><!--[--><!--]--> 代码扫描数据管理 <!--[--><!--]--></a></span></p></nav><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/CodeAnalysis/assets/app-e7c417ae.js" defer></script>
+  </body>
+</html>
